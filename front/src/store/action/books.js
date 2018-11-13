@@ -11,7 +11,7 @@ export const setBooks = (books) => {
 export const initBooks = page => {
     return dispatch => {
         axios.get(`http://localhost:3001/api/book?page=${page}`).then(response => {
-            dispatch(setBooks(response.data.data))
+            dispatch(setBooks(response.data.data));
         });
     };
 };
@@ -21,4 +21,15 @@ export const setPages = page => {
         type: actionTypes.SET_PAGE,
         page: page
     }
-}
+};
+
+export const addItem = (id, title, author, cover, price) => {
+    return {
+        type: actionTypes.ADD_ITEM,
+        id: id,
+        title: title,
+        author: author,
+        cover: cover,
+        price: price
+    }
+};

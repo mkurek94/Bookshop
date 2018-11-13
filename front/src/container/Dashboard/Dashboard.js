@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import SearchBar from '../../components/Searchbar/Searchbar';
 import ItemsContainer from '../ItemContainer/ItemsContainer';
 import NextPageContainer from '../NextPageContainer/NextPageContainer';
 
@@ -13,7 +12,6 @@ class Dashboard extends Component {
         }
         return (
             <div style={ styles }>
-                <SearchBar />
                 <ItemsContainer />
                 <NextPageContainer />
             </div>

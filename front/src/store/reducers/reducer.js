@@ -2,7 +2,8 @@ import * as actionTypes from '../action/actionTypes';
 
 const initialState = {
     page: 1,
-    books: []
+    books: [],
+    basket: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,6 +23,11 @@ const reducer = (state = initialState, action) => {
                     ...state,
                     page: action.page
                 }
+            }
+        case actionTypes.ADD_ITEM:
+            return {
+                ...state,
+                basket: state.basket.concat({id: action.id, title: action.title, author: action.author, cover: action.cover, price: action.price})
             }
         default:
             return state;

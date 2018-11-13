@@ -52,7 +52,7 @@ const item = props => (
         </div>
         <div style={infoContainer}>
           <button type="button">Zamów</button>
-          <button type="button">Dodaj do koszyka</button>
+          <button type="button" onClick={props.addItem}>Dodaj do koszyka</button>
         </div>
       </div>
     </div>

@@ -41,6 +41,7 @@ class ItemsContainer extends Component {
                         cover={el.cover_url}
                         pages={el.pages}
                         price={el.price}
+                        addItem={() => this.props.addItem(el.id, el.title, el.author, el.cover_url, el.price)}
                     />
                 </Aux>
             )
@@ -62,7 +63,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onBooksInit: (page) => dispatch(action.initBooks(page))
+        onBooksInit: (page) => dispatch(action.initBooks(page)),
+        addItem: (id, title, author, cover, price) => dispatch(action.addItem(id, title, author, cover, price))
     }
 }
 

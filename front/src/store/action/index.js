@@ -1,1 +1,1 @@
-export { initBooks, setPages } from "./books";
+export { initBooks, setPages, addItem } from "./books";
