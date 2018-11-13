@@ -1,0 +1,1 @@
+1. component change only when state change - ItemContainer.js
