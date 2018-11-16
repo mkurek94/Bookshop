@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Dashboard from './container/Dashboard/Dashboard';
 import Layout from './container/Layout/Layout';
 import Basket from './container/Basket/Basket';
+import Contact from './container/Contact/Contact';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Switch>
               <Route path="/" exact component={Dashboard} />
               <Route path="/basket" component={Basket} />
+              <Route path="/contact" component={Contact} />
           </Switch>
         </Layout>
       </BrowserRouter>

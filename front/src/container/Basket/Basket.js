@@ -50,7 +50,7 @@ class Basket extends Component {
                 {items}
                 <div style={style}>
                     <button type='button'><Link to='/'>Wróć do księgarni</Link></button>
-                    <button type='button'><Link to='/'>Przejdź dalej</Link></button>
+                    <button type='button'><Link to='/contact'>Przejdź dalej</Link></button>
                 </div>
             </div>
         );
