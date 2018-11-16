@@ -1,1 +1,2 @@
 1. component change only when state change - ItemContainer.js
+2. when add again the same element, only number change DONE

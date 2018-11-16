@@ -23,13 +23,21 @@ export const setPages = page => {
     }
 };
 
-export const addItem = (id, title, author, cover, price) => {
+export const addItem = (id, title, author, cover, price, number) => {
     return {
         type: actionTypes.ADD_ITEM,
         id: id,
         title: title,
         author: author,
         cover: cover,
-        price: price
+        price: price,
+        number: number
+    }
+};
+
+export const removeItem = id => {
+    return {
+        type: actionTypes.REMOVE_ITEM,
+        id: id
     }
 };

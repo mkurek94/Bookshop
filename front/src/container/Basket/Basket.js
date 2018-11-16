@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import * as action from '../../store/action/index';
 
 class Basket extends Component {
     render() {
@@ -19,21 +21,25 @@ class Basket extends Component {
             flexDirection: 'row'
         }
 
-        let items = this.props.basket.map(el => {
-            return(
-                <div style={style}>
-                    <div style={coverAuthor}>
-                        <img src={el.cover} alt="cover" />
-                        <div style={column}>
-                            <span>{el.title}</span>
-                            <span>{el.author}</span>
+        let items = 'Nie masz zadnych towarow w koszyku.';
+        if(this.props.basket[0]) {
+            items = this.props.basket.map(el => {
+                return(
+                    <div style={style} key={el.id}>
+                        <div style={coverAuthor}>
+                            <img src={el.cover} alt="cover" />
+                            <div style={column}>
+                                <span>{el.title}</span>
+                                <span>{el.author}</span>
+                            </div>
                         </div>
+                        <span>{el.number}</span>
+                        <span>{(el.price / 100).toFixed(2)} zl</span>
+                        <button type='button' onClick={() => this.props.deleteItem(el.id)}>DELETE</button>
                     </div>
-                    <span>1</span>
-                    <span>{(el.price / 100).toFixed(2)} zl</span>
-                </div>
-            );
-        })
+                );
+            });
+        }
         return(
             <div style={column}>
                 <div style={style}>
@@ -42,6 +48,10 @@ class Basket extends Component {
                     <span>Cena</span>
                 </div>
                 {items}
+                <div style={style}>
+                    <button type='button'><Link to='/'>Wróć do księgarni</Link></button>
+                    <button type='button'><Link to='/'>Przejdź dalej</Link></button>
+                </div>
             </div>
         );
     }
@@ -53,4 +63,10 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Basket);
+const mapDispatchToProps = dispatch => {
+    return {
+        deleteItem: (id) => dispatch(action.removeItem(id))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Basket);
