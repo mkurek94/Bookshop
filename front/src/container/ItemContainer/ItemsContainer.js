@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from '../../store/action/index';
+import styled from 'styled-components';
 
 import Item from '../../components/Item/Item';
 import Aux from '../../hoc/AuxContainer';
@@ -14,21 +15,21 @@ class ItemsContainer extends Component {
         }, 2000);
     }
 
-    // shouldComponentUpdate(nextProps) {
-    //     return nextProps.page !== this.props.page;
-    //     // console.log(nextProps, nextState);
-    // }
+    shouldComponentUpdate(nextProps) {
+        return nextProps.page !== this.props.page;
+        // console.log(nextProps, nextState);
+    }
 
     componentDidUpdate() {
         this.props.onBooksInit(this.props.page);
     }
 
     render() {
-        const style = {
-            display: 'flex',
-            flexWrap: 'wrap',
-            padding: '0 5rem'
-        };
+        const StyledWrapper = styled.div`
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0 5rem;
+        `;
 
         let book;
         if(this.props.books) {
@@ -48,9 +49,9 @@ class ItemsContainer extends Component {
         });
     }
         return (
-        <div style={style}>
+        <StyledWrapper>
             {book}
-        </div>);
+        </StyledWrapper>);
     };
 }
 

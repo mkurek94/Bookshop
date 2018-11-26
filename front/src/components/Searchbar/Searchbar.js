@@ -1,32 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
 const searchbar = props => {
-    const styles = {
-        display: 'flex',
-        justifyContent: 'center',
-    }
+    const StyledForm = styled.form`
+        display: flex;
+        justify-content: center;
+    `;
 
-    const styleInput = {
-        width: '50%',
-        height: '30px'
-    }
+    const StyledInput = styled.input`
+        width: 50%;
+        height: 30px;
+    `;
 
-    const styleButton = {
-        width: '5%',
-        padding: '2px',
-        boxSizing: 'border-box'
-    }
+    const StyledButton = styled.button`
+        width: 5%;
+        padding: 2px;
+        box-sizing: border-box;
+    `;
 
-    return <form style={styles}>
-        <input type="text" placeholder="Search..." style={styleInput} />
-        <button type="submit" style={styleButton}>
+    return <StyledForm>
+        <StyledInput type="text" placeholder="Search..." />
+        <StyledButton type="submit">
           Search
-        </button>
-        <button type="button">
-          <Link to='/basket'>Koszyk</Link>
-        </button>
-      </form>;
+        </StyledButton>
+        <StyledButton type="button">
+          <Link to="/basket">Koszyk</Link>
+        </StyledButton>
+      </StyledForm>;
 }
 
 export default searchbar;

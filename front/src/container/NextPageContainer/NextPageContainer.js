@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as action from "../../store/action/index";
+import styled from 'styled-components';
 
 class NextPageContainer extends Component {
     nextPageHandler = () => {
@@ -17,17 +18,18 @@ class NextPageContainer extends Component {
 
     render() {
 
-        const button = {
+        const Button = styled.button`
             width: '2rem',
             height: '2rem',
             border: '2px solid #000',
             backgroundColor: 'transparent'
-        }
+        `;
+
         return (
             <div>
-                <button style={button} onClick={this.prevPageHandler}/>
-                <button style={button}>{this.props.page}</button>
-                <button style={button} onClick={this.nextPageHandler}/>
+                <Button onClick={this.prevPageHandler}/>
+                <Button>{this.props.page}</Button>
+                <Button onClick={this.nextPageHandler}/>
             </div>
         );
     }

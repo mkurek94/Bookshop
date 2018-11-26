@@ -1,20 +1,22 @@
 import React, { Component } from 'react';
+import styled from 'styled-components';
 
 import ItemsContainer from '../ItemContainer/ItemsContainer';
 import NextPageContainer from '../NextPageContainer/NextPageContainer';
 
 class Dashboard extends Component {
     render() {
-        const styles = {
-            width: '100%',
-            textAlign: 'center',
-            padding: '30px'
-        }
+        const StyledWrapper = styled.div`
+            width: 100%;
+            text-align: center;
+            padding: 30px;
+        `;
+
         return (
-            <div style={ styles }>
+            <StyledWrapper>
                 <ItemsContainer />
                 <NextPageContainer />
-            </div>
+            </StyledWrapper>
         );
     }
 }

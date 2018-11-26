@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Input from '../../components/UI/Input/Input';
+import styled from 'styled-components';
 
 class Contact extends Component {
   state = {
@@ -224,15 +225,15 @@ class Contact extends Component {
   };
 
   render() {
-    const column = {
-      display: "flex",
-      flexDirection: "column"
-    };
+    const ColumnWrapper = styled.div`
+      display: flex;
+      flex-direction: column;
+    `;
 
-    const style = {
-      display: "flex",
-      justifyContent: "space-around"
-    };
+    const StyledWrapper = styled.div`
+      display: flex;
+      justify-content: space-around;
+    `;
 
     const contactElementsArray = [];
     const addressElementsArray = [];
@@ -282,20 +283,20 @@ class Contact extends Component {
     });
 
     return (
-      <div style={column}>
-        <form style={style}>
-          <div style={column}>{contactInput}</div>
-          <div style={column}>{addressInput}</div>
-        </form>
-        <div style={style}>
+      <ColumnWrapper>
+        <StyledWrapper>
+          <ColumnWrapper>{contactInput}</ColumnWrapper>
+          <ColumnWrapper>{addressInput}</ColumnWrapper>
+        </StyledWrapper>
+        <StyledWrapper>
           <button type="button">
             <Link to="/basket">Cofnij</Link>
           </button>
           <button type="button" disabled={!this.state.formIsValid}>
             Zamawiam i place
           </button>
-        </div>
-      </div>
+        </StyledWrapper>
+      </ColumnWrapper>
     );
   }
 }

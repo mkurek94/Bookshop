@@ -2,57 +2,56 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as action from '../../store/action/index';
+import styled from 'styled-components';
 
 class Basket extends Component {
     render() {
-        const style = {
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between'
-        }
+        const StyledWrapper = styled.div`
+            display: flex;
+            justify-content: space-between;
+        `;
 
-        const column = {
-            display: 'flex',
-            flexDirection: 'column'
-        }
+        const Column = styled.div`
+            display: flex;
+            flex-direction: column;
+        `;
 
-        const coverAuthor = {
-            display: 'flex',
-            flexDirection: 'row'
-        }
+        const CoverAuthor = styled.div`
+            display: flex;
+        `;
 
         let items = 'Nie masz zadnych towarow w koszyku.';
         if(this.props.basket[0]) {
             items = this.props.basket.map(el => {
                 return(
-                    <div style={style} key={el.id}>
-                        <div style={coverAuthor}>
+                    <StyledWrapper key={el.id}>
+                        <CoverAuthor>
                             <img src={el.cover} alt="cover" />
-                            <div style={column}>
+                            <Column>
                                 <span>{el.title}</span>
                                 <span>{el.author}</span>
-                            </div>
-                        </div>
+                            </Column>
+                        </CoverAuthor>
                         <span>{el.number}</span>
                         <span>{(el.price / 100).toFixed(2)} zl</span>
                         <button type='button' onClick={() => this.props.deleteItem(el.id)}>DELETE</button>
-                    </div>
+                    </StyledWrapper>
                 );
             });
         }
         return(
-            <div style={column}>
-                <div style={style}>
+            <Column>
+                <StyledWrapper>
                     <span>Produkt</span>
                     <span>Ilosc</span>
                     <span>Cena</span>
-                </div>
+                </StyledWrapper>
                 {items}
-                <div style={style}>
+                <StyledWrapper>
                     <button type='button'><Link to='/'>Wróć do księgarni</Link></button>
                     <button type='button'><Link to='/contact'>Przejdź dalej</Link></button>
-                </div>
-            </div>
+                </StyledWrapper>
+            </Column>
         );
     }
 }
